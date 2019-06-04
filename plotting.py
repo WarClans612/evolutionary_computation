@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import pareto
+from datetime import datetime
 
-def plot_pareto(data):
+def plot_pareto(data, savefig=False):
     
     # get pareto_front
     front_idx = pareto.identify_pareto(data)
@@ -32,12 +33,13 @@ def plot_pareto(data):
 
 
     plt.show()
-
-    # savefig
-    #fig.savefig('./plots/pareto_'+datetime.now().strftime("%m%d_%H%M")+'.png') 
+    
+    if savefig == True:
+        # savefig
+        fig.savefig('./plots/pareto_'+datetime.now().strftime("%m%d_%H%M")+'.png') 
     return pareto_front
     
-def plot_fitness_vs_generation(fit_v_gen):
+def plot_fitness_vs_generation(fit_v_gen, savefig=False):
     # construct figure
     fig = plt.figure(figsize=(6,4))
 
@@ -53,5 +55,6 @@ def plot_fitness_vs_generation(fit_v_gen):
 
     plt.show()
 
-    # savefig
-    #fig.savefig('./plots/fitness_'+datetime.now().strftime("%m%d_%H%M")+'.png') 
+    if savefig == True:
+        # savefig
+        fig.savefig('./plots/fitness_'+datetime.now().strftime("%m%d_%H%M")+'.png') 
